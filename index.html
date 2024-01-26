@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Kanban Application</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/e08babf8bc.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main>
+        <div class="outer-wrap">
+            <div class="inner-wrap">
+                <section class="heading">
+                    <p class="title">Agile Workflow Zen</p>
+                    <p class="subtitle">web Based Kanban style application to handle project progress </p>
+                </section>
+                <section class="Kanban">
+                    <div class="taskbox">
+                        <div class="title">
+                            <p>TODO</p>
+                            <span class="todo">2</span>
+                        </div>
+                        <div class="cards todo">
+                            <form class="card">
+                                <input type="text" name="task" autocomplete="off" disabled value="test">
+                                <div>
+                                    <span class="task-id">#97522</span>
+                                    <span>
+                                        <button class="edit" data-id=""><i
+                                                class="fa-regular fa-pen-to-square"></i></button>
+                                        <button class="update hide" data-id=""><i
+                                                class="fa-solid fa-check"></i></button>
+                                        <button class="delete" data-id=""><i class="fa-solid fa-trash-can"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <form class="add">
+                            <input type="text" name="task" placeholder="new task" autocomplete="off" maxlength="30">
+                            <button class="" data-id="" name="submit"><i class="fa-solid fa-plus"></i></button>
+                        </form>
+                    </div>
+                    <div class="taskbox">
+                        <div class="title">
+                            <p>In progress </p>
+                            <span class="todo">1</span>
+                        </div>
+                        <div class="cards pending">
+                            <form class="card pending">
+                                <input type="text" name="task" autocomplete="off" disabled value="test">
+                                <div>
+                                    <span class="task-id">#97522</span>
+                                    <span>
+                                        <button class="edit" data-id=""><i
+                                                class="fa-regular fa-pen-to-square"></i></button>
+                                        <button class="update hide" data-id=""><i
+                                                class="fa-solid fa-check"></i></button>
+                                        <button class="delete" data-id=""><i class="fa-solid fa-trash-can"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <form class="add">
+                            <input type="text" name="task" placeholder="new task" autocomplete="off" maxlength="30">
+                            <button class="" data-id="" name="submit"><i class="fa-solid fa-plus"></i></button>
+                        </form>
+                    </div>
+                    <div class="taskbox">
+                        <div class="title">
+                            <p>In progress </p>
+                            <span class="todo">1</span>
+                        </div>
+                        <div class="cards completed">
+                            <form class="card completed">
+                                <input type="text" name="task" autocomplete="off" disabled value="test">
+                                <div>
+                                    <span class="task-id">#97522</span>
+                                    <span>
+                                        <button class="edit" data-id=""><i
+                                                class="fa-regular fa-pen-to-square"></i></button>
+                                        <button class="update hide" data-id=""><i
+                                                class="fa-solid fa-check"></i></button>
+                                        <button class="delete" data-id=""><i class="fa-solid fa-trash-can"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <form class="add">
+                            <input type="text" name="task" placeholder="new task" autocomplete="off" maxlength="30">
+                            <button class="" data-id="" name="submit"><i class="fa-solid fa-plus"></i></button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="./index.js"></script>
+</body>
+
+</html>
