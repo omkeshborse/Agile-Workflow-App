@@ -1,5 +1,11 @@
 export default class Kanban {
-  static getTasks(columnId) {}
+  static getTasks(columnId) {
+    const data = read().find(column=>column.columnId ===columnId ) ;
+    if (!data) {
+      return [] ;
+    }
+    return data.tasks ;
+  }
   static insertTask(columnId, content) {}
   static updateTask(taskId, updatedInfo) {}
   static deleteTask(taskId) {}
