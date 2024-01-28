@@ -23,14 +23,34 @@ export default class Kanban {
     save(data);
     return task;
   }
-  
-  static updateTask(taskId, updatedInfo) {}
+
+  static updateTask(taskId, updatedInformation) {
+    const data = read();
+    function findColumnTask() {
+      for (const column of data) {
+        const task = column.tasks.find((item) => item.taskId === taskId);
+        if (task) {
+          return [task, column];
+        }
+      }
+    }
+    const [task, currentColumn] = findColumnTask();
+
+    const targetColumn = data.find(
+      (column) => column.columnId === updatedInformation.columnId
+    );
+    task.content = updatedInformation.content;
+    currentColumn.tasks.splice(currentColumn.tasks.indexOf(task), 1);
+    targetColumn.tasks.push(task);
+
+    save(data);
+  }
 
   static deleteTask(taskId) {
     const data = read();
 
     for (const column of data) {
-       column.tasks = column.tasks.filter((item) => item.taskId !== taskId);
+      column.tasks = column.tasks.filter((item) => item.taskId !== taskId);
     }
     save(data);
   }
