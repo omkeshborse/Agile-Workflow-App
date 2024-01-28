@@ -57,6 +57,7 @@ export default class Kanban {
 
   static getAllTasks() {
     const data = read();
+    columnCount();
     return [data[0].tasks, data[1].tasks, data[2].tasks];
   }
 }
@@ -75,17 +76,27 @@ function read() {
 
 function save(data) {
   localStorage.setItem("data", JSON.stringify(data));
+  columnCount()
 }
 
+function columnCount() {
+  const data = read();
+
+  const todo = document.querySelector("span.todo");
+  todo.textContent = data[0].tasks.length;
+  const pending = document.querySelector("span.pending");
+  console.log(pending);
+  pending.textContent = data[1].tasks.length;
+  const completed = document.querySelector("span.completed");
+  completed.textContent = data[2].tasks.length;
+}
 
 // console.log(Kanban.getAllTasks());
 // console.log(Kanban.getTasks(1));
 
-
 // console.log(Kanban.getTasks(1));
 // console.log(Kanban.insertTask(0, "make react project"));
 // console.log(Kanban.getTasks(1));
-
 
 // console.log(Kanban.getAllTasks());
 // Kanban.deleteTask(18811);
