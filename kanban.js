@@ -6,24 +6,35 @@ export default class Kanban {
     }
     return data.tasks;
   }
+
   static insertTask(columnId, content) {
     const data = read();
     const column = data.find((column) => column.columnId === columnId);
 
     const task = {
       taskId: Math.floor(Math.random() * 100000),
-       content: content,
+      content: content,
     };
     if (!column) {
-      throw new Error("Column doesn't exists !")
+      throw new Error("Column doesn't exists !");
     }
     column.tasks.push(task);
     console.log(data);
-    localStorage.setItem("data" , JSON.stringify(data)) ;
-    return task ;
+    save(data);
+    return task;
   }
+  
   static updateTask(taskId, updatedInfo) {}
-  static deleteTask(taskId) {}
+
+  static deleteTask(taskId) {
+    const data = read();
+
+    for (const column of data) {
+       column.tasks = column.tasks.filter((item) => item.taskId !== taskId);
+    }
+    save(data);
+  }
+
   static getAllTasks() {
     const data = read();
     return [data[0].tasks, data[1].tasks, data[2].tasks];
@@ -42,4 +53,6 @@ function read() {
   return JSON.parse(data);
 }
 
-function save() {}
+function save(data) {
+  localStorage.setItem("data", JSON.stringify(data));
+}
