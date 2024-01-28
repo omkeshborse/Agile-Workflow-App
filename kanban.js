@@ -76,3 +76,21 @@ function read() {
 function save(data) {
   localStorage.setItem("data", JSON.stringify(data));
 }
+
+
+// console.log(Kanban.getAllTasks());
+// console.log(Kanban.getTasks(1));
+
+
+// console.log(Kanban.getTasks(1));
+// console.log(Kanban.insertTask(0, "make react project"));
+// console.log(Kanban.getTasks(1));
+
+
+// console.log(Kanban.getAllTasks());
+// Kanban.deleteTask(18811);
+// console.log(Kanban.getAllTasks());
+
+// console.log(Kanban.getAllTasks());
+// // Kanban.updateTask(97522, { columnId: 1, content: "record javascript preview" });
+// console.log(Kanban.getAllTasks());
