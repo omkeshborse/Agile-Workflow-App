@@ -47,19 +47,15 @@ addForm.forEach((form) => {
 taskbox.forEach((column) => {
   column.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log();
+    const formInput =
+      e.target.parentElement.parentElement.previousElementSibling;
     if (e.target.classList.contains("edit")) {
-      e.target.parentElement.parentElement.previousElementSibling.removeAttribute(
-        "disabled"
-      );
+      formInput.removeAttribute("disabled");
       e.target.classList.add("hide");
       e.target.nextElementSibling.classList.remove("hide");
     }
     if (e.target.classList.contains("update")) {
-      e.target.parentElement.parentElement.previousElementSibling.setAttribute(
-        "disabled",
-        "disabled"
-      );
+      formInput.setAttribute("disabled", "disabled");
       e.target.classList.add("hide");
       e.target.previousElementSibling.classList.remove("hide");
       const taskId = e.target.dataset.id;
@@ -67,6 +63,11 @@ taskbox.forEach((column) => {
       const content =
         e.target.parentElement.parentElement.previousElementSibling.value;
       Kanban.updateTask(taskId, { columnId, content });
+    }
+
+    if (e.target.classList.contains("delete")) {
+      formInput.parentElement.remove();
+      Kanban.deleteTask(parseInt(e.target.dataset.id));
     }
   });
 });

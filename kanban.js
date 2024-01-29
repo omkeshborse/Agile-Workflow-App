@@ -76,7 +76,7 @@ function read() {
 
 function save(data) {
   localStorage.setItem("data", JSON.stringify(data));
-  columnCount()
+  columnCount();
 }
 
 function columnCount() {
@@ -98,7 +98,7 @@ function columnCount() {
 // console.log(Kanban.getTasks(1));
 
 // console.log(Kanban.getAllTasks());
-// Kanban.deleteTask(18811);
+// Kanban.deleteTask(24564);
 // console.log(Kanban.getAllTasks());
 
 // console.log(Kanban.getAllTasks());
