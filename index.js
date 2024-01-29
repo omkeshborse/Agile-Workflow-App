@@ -10,12 +10,12 @@ function addTaskCard(task, index) {
   element.className = "card";
   element.draggable = true;
   element.dataset.id = task.taskId;
-  element.innerHTML = `<input  value="${task.content}" type="text" name="task" autocomplete="off" disabled>
+  element.innerHTML = `<input  value="${task.content}" type="text" name="task" autocomplete="off" disabled="disabled">
                 <div>
                     <span class="task-id">#${task.taskId}</span>
                     <span>
                         <button class="edit" data-id="${task.taskId}"><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button class="update hide" data-id="${task.taskId}"><i class="fa-solid fa-check"></i></button>
+                        <button class="update hide" data-id="${task.taskId}" data-column="${index}"><i class="fa-solid fa-check"></i></button>
                         <button class="delete" data-id="${task.taskId}"><i class="fa-solid fa-trash-can"></i></button>
                     </span>
                 </div>`;
@@ -30,7 +30,6 @@ Kanban.getAllTasks().forEach((tasks, index) => {
 });
 
 const addForm = document.querySelectorAll("form.add");
-console.log(addForm);
 addForm.forEach((form) => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -41,6 +40,33 @@ addForm.forEach((form) => {
       );
       addTaskCard(task, form.submit.dataset.id);
       form.reset();
+    }
+  });
+});
+
+taskbox.forEach((column) => {
+  column.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log();
+    if (e.target.classList.contains("edit")) {
+      e.target.parentElement.parentElement.previousElementSibling.removeAttribute(
+        "disabled"
+      );
+      e.target.classList.add("hide");
+      e.target.nextElementSibling.classList.remove("hide");
+    }
+    if (e.target.classList.contains("update")) {
+      e.target.parentElement.parentElement.previousElementSibling.setAttribute(
+        "disabled",
+        "disabled"
+      );
+      e.target.classList.add("hide");
+      e.target.previousElementSibling.classList.remove("hide");
+      const taskId = e.target.dataset.id;
+      const columnId = e.target.dataset.column;
+      const content =
+        e.target.parentElement.parentElement.previousElementSibling.value;
+      Kanban.updateTask(taskId, { columnId, content });
     }
   });
 });

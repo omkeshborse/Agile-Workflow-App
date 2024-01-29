@@ -85,7 +85,6 @@ function columnCount() {
   const todo = document.querySelector("span.todo");
   todo.textContent = data[0].tasks.length;
   const pending = document.querySelector("span.pending");
-  console.log(pending);
   pending.textContent = data[1].tasks.length;
   const completed = document.querySelector("span.completed");
   completed.textContent = data[2].tasks.length;
