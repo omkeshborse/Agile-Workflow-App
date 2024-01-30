@@ -87,7 +87,6 @@ taskbox.forEach((column) => {
       const taskId = e.target.dataset.id;
       const columnId = e.target.parentElement.dataset.id;
       const content = e.target.task.value;
-      console.log(content);
       Kanban.updateTask(parseInt (taskId), {
         columnId: parseInt(columnId),
         content: content,

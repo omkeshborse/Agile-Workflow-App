@@ -19,7 +19,6 @@ export default class Kanban {
       throw new Error("Column doesn't exists !");
     }
     column.tasks.push(task);
-    console.log(data);
     save(data);
     return task;
   }
