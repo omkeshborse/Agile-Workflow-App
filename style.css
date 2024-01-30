@@ -90,7 +90,9 @@
     flex-direction: column;
     box-shadow: var(--box-shadow);
 }
-
+.card.dragging{
+    opacity: 0.4;
+}
 .card input {
     background-color: #fff;
     margin: 10px 0px;

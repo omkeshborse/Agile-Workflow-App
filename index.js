@@ -70,4 +70,28 @@ taskbox.forEach((column) => {
       Kanban.deleteTask(parseInt(e.target.dataset.id));
     }
   });
+
+  column.addEventListener("dragstart", (e) => {
+    if (e.target.classList.contains("card")) {
+      e.target.classList.add("dragging");
+    }
+  });
+
+  column.addEventListener("dragover", (e) => {
+    const card = document.querySelector(".dragging");
+    column.appendChild(card);
+  });
+  column.addEventListener("dragend", (e) => {
+    if (e.target.classList.contains("card")) {
+      e.target.classList.remove("dragging");
+      const taskId = e.target.dataset.id;
+      const columnId = e.target.parentElement.dataset.id;
+      const content = e.target.task.value;
+      console.log(content);
+      Kanban.updateTask(parseInt (taskId), {
+        columnId: parseInt(columnId),
+        content: content,
+      });
+    }
+  });
 });
